@@ -2,6 +2,10 @@ object intsets {
     val t1 = new NonEmpty(3, Empty, Empty)
     val t2 = t1 incl 4
 
+    def y = false
+    val x = { println(5) }
+    val yVal = y
+
     abstract class IntSet {
         def contains(x: Int): Boolean
         def incl(x: Int): IntSet

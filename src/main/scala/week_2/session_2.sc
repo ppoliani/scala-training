@@ -1,4 +1,4 @@
-package week_3
+package week_2
 
 object rationals {
     val x = new Rational(1, 3)
