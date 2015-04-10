@@ -11,7 +11,7 @@ abstract class Nat {
     def -(that: Nat): Nat
 }
 
-object Zero extends Nat{
+object Zero extends Nat {
     def isZero = true
 
     def predecessor = throw new Error("0.predecessor")
