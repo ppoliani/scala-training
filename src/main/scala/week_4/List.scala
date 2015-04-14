@@ -4,6 +4,7 @@ trait List[+T] {
     def isEmpty: Boolean
     def head: T
     def tail: List[T]
+    def prepend[U >: T](elem: U): List[U] = new Cons(elem, this)
 }
 
 /*
@@ -25,7 +26,6 @@ object  Nil extends List[Nothing] {
     def tail: Nothing = throw new NoSuchElementException("Nil.head")
 }
 
-
 object List {
     def apply[T](x1: T, x2: T): List[T] = new Cons(x1, new Cons(x2,  Nil))
     def apply[T]() =  Nil
@@ -35,4 +35,5 @@ object test {
     // We need to do the list covariant so it works
     // because Nothing <: String so List[Nothing] <: List[String]
     val x: List[String] = Nil
+
 }

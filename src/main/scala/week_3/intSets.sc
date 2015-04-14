@@ -13,7 +13,7 @@ object intsets {
         def union(other: IntSet): IntSet
     }
 
-    object Empty extends IntSet {
+    object https://class.coursera.org/progfun-004/lecture/83 extends IntSet {
         def contains(x: Int): Boolean = false
 
         def incl(x: Int): IntSet = new NonEmpty(x, Empty, Empty)
