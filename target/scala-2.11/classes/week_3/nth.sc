@@ -1,4 +1,5 @@
 import week_3._
+import week_4.{Nil, Cons, List}
 
 object nth {
     def nth[T](n: Int, xs: List[T]): T =

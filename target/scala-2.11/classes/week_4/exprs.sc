@@ -1,4 +1,5 @@
-import week_4._
+package week_4
+
 object  exprs {
     def show(e: Expr) : String = e match {
         case Number(x) => x.toString
