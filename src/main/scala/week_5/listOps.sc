@@ -28,7 +28,8 @@ object listOps {
 
     reverse(List(1, 2, 3))
 
-    def removeAt[T](n: Int, xs: List[T]) = {
+    // my version
+    def removeAt_my[T](n: Int, xs: List[T]) = {
         def _removeAt[T](i: Int, xs: List[T]): List[T] = xs match {
             case Nil => Nil
             case List(x) => List(x)
@@ -38,5 +39,26 @@ object listOps {
         _removeAt(0, xs)
     }
 
-    removeAt(1, List('a', 'b', 'c', 'd'))
+    removeAt_my(1, List('a', 'b', 'c', 'd'))
+
+    def removeAt[T](n: Int, xs: List[T]) = (xs take n) ::: (xs drop n + 1)
+
+    def flatten(xs: List[Any]): List[Any] = {
+        def _innerFlatten(xxs: List[Any]): List[Any] = {
+            xxs match {
+                case Nil => Nil
+                case y :: ys => y match {
+                    case zs: List[Any] => flatten(zs)
+                    case z => z :: _innerFlatten(ys)
+                }
+            }
+        }
+
+        xs match {
+            case Nil => Nil
+            case y :: ys => y :: _innerFlatten(ys)
+        }
+    }
+    flatten(List(List(1, 1), 2, List(3, List(5, 8))))
+    assert(flatten(List(List(1, 1), 2, List(3, List(5, 8)))) == List(1, 1, 2, 3, 5, 8))
 }
