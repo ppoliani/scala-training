@@ -56,9 +56,13 @@ object listOps {
 
         xs match {
             case Nil => Nil
-            case y :: ys => y :: _innerFlatten(ys)
+            case y :: ys => y match {
+                case z: List[Any] => _innerFlatten(z) ++ flatten(ys)
+                case z: Any => z :: _innerFlatten(ys)
+            }
         }
     }
+
     flatten(List(List(1, 1), 2, List(3, List(5, 8))))
     assert(flatten(List(List(1, 1), 2, List(3, List(5, 8)))) == List(1, 1, 2, 3, 5, 8))
 }
